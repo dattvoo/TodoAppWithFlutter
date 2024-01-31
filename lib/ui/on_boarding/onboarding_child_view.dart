@@ -6,11 +6,13 @@ class OnboardingChildView extends StatelessWidget {
   final OnboardingPagePosotion onboardingPagePosotion;
   final VoidCallback onPressNext;
   final VoidCallback onPressBack;
+  final VoidCallback onPressSkip;
   const OnboardingChildView(
       {super.key,
       required this.onboardingPagePosotion,
       required this.onPressNext,
-      required this.onPressBack});
+      required this.onPressBack,
+      required this.onPressSkip});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +41,9 @@ class OnboardingChildView extends StatelessWidget {
       margin: const EdgeInsets.only(top: 14),
       alignment: AlignmentDirectional.centerStart,
       child: TextButton(
-        onPressed: () => {},
+        onPressed: () => {
+          onPressSkip!(),
+        },
         child: Text(
           'SKIP',
           style: TextStyle(color: Colors.white.withOpacity(0.44)),

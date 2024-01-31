@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:super_todo_app/ui/on_boarding/onboarding_child_view.dart';
+import 'package:super_todo_app/ui/start_screen/start_screen_view.dart';
 import 'package:super_todo_app/utils/enum/onboarding_page_position.dart';
 
 class OnBoardingView extends StatefulWidget {
@@ -24,6 +25,9 @@ class _OnBoardingViewState extends State<OnBoardingView> {
             _pageController.jumpToPage(1);
           },
           onPressBack: () {},
+          onPressSkip: () {
+            _pageController.jumpToPage(2);
+          },
         ),
         OnboardingChildView(
           onboardingPagePosotion: OnboardingPagePosotion.page2,
@@ -33,13 +37,20 @@ class _OnBoardingViewState extends State<OnBoardingView> {
           onPressBack: () {
             _pageController.jumpToPage(0);
           },
+          onPressSkip: () {
+            _pageController.jumpToPage(2);
+          },
         ),
         OnboardingChildView(
           onboardingPagePosotion: OnboardingPagePosotion.page3,
-          onPressNext: () {},
+          onPressNext: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const StartScreen()));
+          },
           onPressBack: () {
             _pageController.jumpToPage(1);
           },
+          onPressSkip: () {},
         ),
       ],
     ));
