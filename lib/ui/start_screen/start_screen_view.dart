@@ -7,31 +7,29 @@ class StartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFF121212),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        leading: Container(
+          margin: const EdgeInsets.symmetric(horizontal: 18),
+          child: GestureDetector(
+            onTap: () => Navigator.pop(context),
+            child: const Icon(
+              Icons.arrow_back_ios_new,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
       body: SafeArea(
           child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Column(
           children: [
-            _buildBackButton(context),
             _buildHeaderContentAndTitle(),
             _buildActionButton(),
           ],
         ),
       )),
-    );
-  }
-
-  Widget _buildBackButton(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(top: 14).copyWith(bottom: 60),
-      alignment: AlignmentDirectional.centerStart,
-      child: GestureDetector(
-        onTap: () => Navigator.pop(context),
-        child: const Icon(
-          Icons.arrow_back_ios_new,
-          color: Colors.white,
-        ),
-      ),
     );
   }
 
@@ -66,7 +64,7 @@ class StartScreen extends StatelessWidget {
 
   Widget _buildActionButton() {
     return Expanded(
-      child: Container(
+      child: SizedBox(
         width: double.infinity,
         child: Column(
           children: [
@@ -81,7 +79,11 @@ class StartScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(4))),
                 child: const Text(
                   'LOGIN',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: "Lato",
+                      fontSize: 16,
+                      letterSpacing: 1.5),
                 ),
               ),
             ),
@@ -101,7 +103,11 @@ class StartScreen extends StatelessWidget {
                     )),
                 child: const Text(
                   'CREATE ACCOUNT',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: "Lato",
+                      fontSize: 16,
+                      letterSpacing: 1.5),
                 ),
               ),
             ),

@@ -42,7 +42,7 @@ class OnboardingChildView extends StatelessWidget {
       alignment: AlignmentDirectional.centerStart,
       child: TextButton(
         onPressed: () => {
-          onPressSkip!(),
+          onPressSkip(),
         },
         child: Text(
           'SKIP',
