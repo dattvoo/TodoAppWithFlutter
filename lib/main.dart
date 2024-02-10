@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:super_todo_app/ui/login_screen/login_screen_view.dart';
 import 'package:super_todo_app/ui/main/main_page.dart';
 import 'package:super_todo_app/ui/on_boarding/onboarding_view.dart';
+import 'package:super_todo_app/ui/register_screen/register_screen_view.dart';
 import 'package:super_todo_app/ui/splash/splash.dart';
 import 'package:super_todo_app/ui/start_screen/start_screen_view.dart';
 
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: LoginScreen(),
+      home: const RegisterScreen(),
     );
   }
 }
