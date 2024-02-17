@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:super_todo_app/ui/login_screen/login_screen_view.dart';
 import 'package:super_todo_app/ui/register_screen/register_screen_navigator.dart';
 import 'package:super_todo_app/widgets/CustomButton/custom_button.dart';
 import 'package:super_todo_app/widgets/CustomButton/custom_button_with_icon.dart';
@@ -18,7 +19,9 @@ class RegisterScreen extends StatelessWidget {
         leading: Container(
           margin: const EdgeInsets.symmetric(horizontal: 18),
           child: GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.pop(context);
+            },
             child: const Icon(
               Icons.arrow_back_ios_new,
               color: Colors.white,
@@ -118,15 +121,19 @@ class RegisterScreen extends StatelessWidget {
         alignment: Alignment.center,
         child: GestureDetector(
           onTap: () => {RegisterNavigator.goToLoginPage(context)},
-          child: RichText(
-              text: TextSpan(
-                  text: "Already have an account?\t\t",
-                  style: const TextStyle(color: Color(0xFF979797)),
-                  children: [
-                TextSpan(
-                    text: 'Login',
-                    style: TextStyle(color: Colors.white.withOpacity(0.87)))
-              ])),
+          child: GestureDetector(
+            onTap: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const LoginScreen())),
+            child: RichText(
+                text: TextSpan(
+                    text: "Already have an account?\t\t",
+                    style: const TextStyle(color: Color(0xFF979797)),
+                    children: [
+                  TextSpan(
+                      text: 'Login',
+                      style: TextStyle(color: Colors.white.withOpacity(0.87)))
+                ])),
+          ),
         ),
       ),
     );

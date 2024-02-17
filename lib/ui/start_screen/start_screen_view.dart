@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:super_todo_app/ui/start_screen/start_screen_navigator.dart';
 
 class StartScreen extends StatelessWidget {
   const StartScreen({super.key});
@@ -26,7 +27,7 @@ class StartScreen extends StatelessWidget {
         child: Column(
           children: [
             _buildHeaderContentAndTitle(),
-            _buildActionButton(),
+            _buildActionButton(context),
           ],
         ),
       )),
@@ -37,6 +38,7 @@ class StartScreen extends StatelessWidget {
     return Expanded(
       flex: 2,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const Text(
             'Welcome to UpTodo',
@@ -50,10 +52,13 @@ class StartScreen extends StatelessWidget {
             height: 28,
           ),
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
+            padding: const EdgeInsets.symmetric(horizontal: 50),
             child: Text(
               'Please login to your account or create new account to continue',
-              style: TextStyle(color: Colors.white.withOpacity(0.87)),
+              style: TextStyle(
+                color: Colors.white.withOpacity(0.67),
+                fontSize: 16,
+              ),
               textAlign: TextAlign.center,
             ),
           ),
@@ -62,7 +67,7 @@ class StartScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildActionButton() {
+  Widget _buildActionButton(BuildContext context) {
     return Expanded(
       child: SizedBox(
         width: double.infinity,
@@ -72,7 +77,9 @@ class StartScreen extends StatelessWidget {
               width: double.infinity, // Set the desired width
               height: 50.0, // Set the desired height
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  StartNavigator.goToLoginPage(context);
+                },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF8875FF),
                     shape: RoundedRectangleBorder(
@@ -94,7 +101,9 @@ class StartScreen extends StatelessWidget {
               width: double.infinity, // Set the desired width
               height: 50.0, // Set the desired height
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  StartNavigator.goToRegisterPage(context);
+                },
                 style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF121212),
                     shape: RoundedRectangleBorder(
