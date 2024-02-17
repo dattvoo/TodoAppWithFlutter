@@ -1,4 +1,7 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
+import 'package:super_todo_app/ui/register_screen/register_screen_view.dart';
 import 'package:super_todo_app/widgets/CustomButton/custom_button.dart';
 import 'package:super_todo_app/widgets/CustomButton/custom_button_with_icon.dart';
 import 'package:super_todo_app/widgets/CustomTextFiled/custom_text_field.dart';
@@ -17,7 +20,9 @@ class LoginScreen extends StatelessWidget {
         leading: Container(
           margin: const EdgeInsets.symmetric(horizontal: 18),
           child: GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.pop(context);
+            },
             child: const Icon(
               Icons.arrow_back_ios_new,
               color: Colors.white,
@@ -36,7 +41,7 @@ class LoginScreen extends StatelessWidget {
             _buildActionForm(),
             _buildLineOr(),
             _buildButtonLoginWithSocial(),
-            _buildRegisterText()
+            _buildRegisterText(context)
           ],
         ),
       ),
@@ -102,20 +107,24 @@ class LoginScreen extends StatelessWidget {
     ]);
   }
 
-  Widget _buildRegisterText() {
+  Widget _buildRegisterText(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 46),
       child: Align(
         alignment: Alignment.center,
-        child: RichText(
-            text: TextSpan(
-                text: "Do not have an account?\t",
-                style: const TextStyle(color: Color(0xFF979797)),
-                children: [
-              TextSpan(
-                  text: 'Register now',
-                  style: TextStyle(color: Colors.white.withOpacity(0.87)))
-            ])),
+        child: GestureDetector(
+          onTap: () => Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const RegisterScreen())),
+          child: RichText(
+              text: TextSpan(
+                  text: "Do not have an account?\t",
+                  style: const TextStyle(color: Color(0xFF979797)),
+                  children: [
+                TextSpan(
+                    text: 'Register now',
+                    style: TextStyle(color: Colors.white.withOpacity(0.87)))
+              ])),
+        ),
       ),
     );
   }
